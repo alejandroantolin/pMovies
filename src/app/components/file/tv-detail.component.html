@@ -1,0 +1,52 @@
+<div class="file tv" *ngIf="file" id="{{file.id}}">
+	<div id="backdrop-img">
+		<div id="overlay-poster"  [@background]="state" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w1280'+file.backdrop_path}"></div>
+		<div id="description">
+			<div id="main-info">
+				<div class="file-card card" [@poster]="state">
+					<div class="file-image" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w300'+file.poster_path+')'}">
+						<div class="border-poster"></div>
+					</div>
+				</div>
+				<div id="title">
+					<span>{{file.name}} </span>
+					<span id="year">({{file.seasons[0].air_date | date:'y'}})</span>
+				</div>
+				<div id="other-info">
+					<md-icon>star_rate</md-icon>
+					<span id="num-rating">{{file.vote_average}}/10</span>
+					<span class="divider"></span>
+					<span>{{file.episode_run_time[0]}} min.</span>
+                    <span class="divider"></span>
+					<span>{{file.seasons.length}} {{file.seasons.length > 1 ? "temporadas" : " temporada"}}</span>
+                    <span class="divider"></span>
+					<span>{{file.networks[0].name}}</span>
+				</div>
+			</div>
+			<div id="information" >
+				<div id="genres" [@genres]="state">
+					<span class="chip" *ngFor="let genre of file.genres">
+						{{genre.name}}
+					</span>
+				</div>
+				<div id="overview" [@overview]="state">
+					{{file.overview}}
+				</div>
+				<div id="crew" *ngIf="crew" [@crew]="state">
+					<div class="wrap-person" *ngFor="let person of crew">
+						<span class="crew_person" *ngIf="person.job === 'Director' && person.profile_path !== null" [ngStyle]="{'background-image': person.profile_path !== null ? 'url(https://image.tmdb.org/t/p/w75'+person.profile_path : 'url(http://www.bioanalysi.com/lab/wp-content/uploads/2015/04/profile_avatar_man.jpg'}" md-tooltip="{{person.name}}" tooltip-position="below">
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div id="seasons-tab">
+            <div id="scroll-season">
+                <div class="wrap-season" *ngFor="let season of file.seasons" >
+                    <div class="season" *ngIf="season.poster_path" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w185'+season.poster_path+')'}">
+                    </div>
+                </div>
+	        </div>
+        </div>
+	</div>
+</div>

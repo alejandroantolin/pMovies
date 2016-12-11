@@ -1,0 +1,48 @@
+<div class="file" *ngIf="file" id="{{file.id}}">
+
+	<div id="backdrop-img">
+		<div id="overlay-poster"  [@background]="state" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w1280'+file.backdrop_path}"></div>
+		<div id="description">
+			<div id="main-info">
+				<div class="file-card card" [@poster]="state">
+					<div class="file-image" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w300'+file.poster_path}">
+						<div class="border-poster"></div>
+					</div>
+				</div>
+				<div id="title">
+					<span>{{file.title}} </span>
+					<span id="year">({{file.release_date | date:'y'}})</span>
+				</div>
+				<div id="other-info">
+					<md-icon>star_rate</md-icon>
+					<span id="num-rating">{{file.vote_average}}/10</span>
+					<span class="divider"></span>
+					<span>{{file.runtime}} min.</span>
+					<span class="divider"></span>
+					<span>{{file.production_countries[0].name}}</span>
+				</div>
+			</div>
+			<div id="information" >
+				<div id="genres" [@genres]="state">
+					<span class="chip" *ngFor="let genre of file.genres">
+						{{genre.name}}
+					</span>
+				</div>
+				<div id="overview" [@overview]="state">
+					{{file.overview}}
+				</div>
+				<div id="crew" *ngIf="crew" [@crew]="state">
+					<div class="wrap-person" *ngFor="let person of crew">
+						<span class="crew_person" *ngIf="person.job === 'Director' && person.profile_path !== null" [ngStyle]="{'background-image': person.profile_path !== null ? 'url(https://image.tmdb.org/t/p/w75'+person.profile_path : 'url(http://www.bioanalysi.com/lab/wp-content/uploads/2015/04/profile_avatar_man.jpg'}" md-tooltip="{{person.name}}" tooltip-position="below">
+						</span>
+					</div>
+				</div>
+				<div id="download" [@download]="state">
+					<button md-raised-button color="accent" (click)="viewMovie()"><md-icon>play_arrow</md-icon> PLAY</button>
+				</div>
+
+			
+			</div>
+		</div>
+	</div>
+</div>

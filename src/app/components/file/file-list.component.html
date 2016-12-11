@@ -1,0 +1,32 @@
+<div class="space-top">
+	<div class="overflow">
+		<div id="loading-overlay" *ngIf="loading">
+			<md-progress-circle mode="indeterminate" color="primary"></md-progress-circle>
+		</div>
+
+		<!--<md-sidenav-layout *ngIf="!loading">
+			<md-sidenav mode="side" opened="true">
+			
+			</md-sidenav>-->
+			<div class="list-files"  *ngIf="!loading">
+				<div class="file-card card"  *ngFor="let file of files" (click)="onSelect(file)" >
+					<!-- Check if Movie or TV -->
+					<div *ngIf="file.media_type=='tv'">
+						<div class="file-image" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w185'+file.poster_path}"><div class="border-poster"></div></div>
+						<div class="file-name">
+							<span title={{file.title}}>{{file.name}}</span>
+						</div>
+					</div>
+					<div *ngIf="file.media_type=='movie'">
+						<div class="file-image" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w185'+file.poster_path}"><div class="border-poster"></div></div>
+						<div class="file-name">
+							<span title={{file.title}}>{{file.title}}</span>
+						</div>
+					</div>	
+				</div>
+				<div class="filler" *ngFor="let file of files"></div>
+			</div>
+		<!--</md-sidenav-layout>-->
+
+	</div>
+</div>

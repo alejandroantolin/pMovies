@@ -1,0 +1,26 @@
+<md-toolbar>
+  <span id="left_nav" > 
+	<a *ngIf="pageState.page=='detail'" routerLink="/files" routerLinkActive="active">	<md-icon>chevron_left</md-icon><span>	Volver </span></a>
+	</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="tab_center">
+	   <div class="input-group">
+			<input type="text" class="form-control" [(ngModel)]="search"  (keyup.enter)="handleChange()" placeholder="Buscar..." id="search">
+			<div (click)="handleChange()" class="input-group-btn">
+				<md-icon svgSrc="./assets/icons/search.svg"></md-icon>
+			</div>
+		</div>
+  </span>
+  <span id="right_nav">
+		<button md-icon-button [md-menu-trigger-for]="menu">
+			<md-icon>more_vert</md-icon>
+		</button>
+
+		<md-menu #menu="mdMenu" x-position="before">
+				<button md-menu-item (click)="sync()"> Sincronizar </button>
+				<button md-menu-item disabled> Ajustes </button>
+				<button md-menu-item disabled> Ayuda </button>
+				<button md-menu-item disabled> Cerrar sesión </button>
+		</md-menu>
+  </span>
+</md-toolbar>

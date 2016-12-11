@@ -1,0 +1,20 @@
+<!--<div id="tab_buttons">
+	<div id="main_title_bar">
+		<span>{{name}}</span>
+	</div>
+	<div id="wrapper_buttons">
+		<a href="javascript:window.minimize()"><img id="min-window" src="./assets/icons/min.png" onmouseover="this.src='./assets/icons/minhover.png'" onmouseout="this.src='./assets/icons/min.png'"></a>
+		<a href="javascript:window.maximize()"><img id="max-window" src="./assets/icons/max.png" onmouseover="this.src='./assets/icons/maxhover.png'" onmouseout="this.src='./assets/icons/max.png'"></a>
+		<a href="javascript:window.close()"><img id="close-window" src="./assets/icons/close.png" onmouseover="this.src='./assets/icons/closehover.png'" onmouseout="this.src='./assets/icons/close.png'"></a>
+	</div>
+</div>-->
+<div>
+	<div id="player" [ngClass]="{'active': pagestate.player}">
+	</div>
+	<toolbar (searchEvent)="handleMyEvent($event)"></toolbar>
+	<router-outlet></router-outlet>
+	<!-- <div class="footer">
+		<span >v.{{version}}</span>
+	</div>
+	-->
+</div>
