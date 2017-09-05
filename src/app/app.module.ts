@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA }from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing';
@@ -8,7 +9,6 @@ import {
   HashLocationStrategy
 } from '@angular/common';
 
-import { MaterialModule } from '@angular/material';
 
 import { AppComponent }  from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -20,7 +20,7 @@ import { FileService } from './services/file.service';
 
 @NgModule({
   imports: [
-    MaterialModule.forRoot(),
+    BrowserAnimationsModule,
     BrowserModule,
     HttpModule,
     FormsModule,
