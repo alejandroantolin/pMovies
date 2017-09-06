@@ -4,15 +4,15 @@ import {MovieDetailComponent} from './components/file/movie-detail.component';
 import {TvDetailComponent} from './components/file/tv-detail.component';
 
 const appRoutes: Routes = [
-	{
-	    path: '',
-	    redirectTo: 'files',
-	    pathMatch: 'full'
-  	},
-	{ path: 'files',  component: FileListComponent},
-	{ path: 'files/:search',  component: FileListComponent},
-	{ path: 'movie/:id', component: MovieDetailComponent },
-	{ path: 'tv/:id', component: TvDetailComponent },
+  {
+    path: '',
+    redirectTo: 'files',
+    pathMatch: 'full'
+  },
+  { path: 'files',  component: FileListComponent},
+  { path: 'files/:search',  component: FileListComponent},
+  { path: 'movie/:id', component: MovieDetailComponent },
+  { path: 'tv/:id', component: TvDetailComponent },
 ];
 
 export const appRoutingProviders: any[] = [];
