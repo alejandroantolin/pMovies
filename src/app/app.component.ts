@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
-import './rxjs-operators';
+import '@app/rxjs-operators';
 
-import {FileService} from './services/file.service';
+import {FileService} from '@services/file.service';
 
 @Component({
 	templateUrl: 'app.component.html',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
 
 	/**
 	 * pageState es un objeto ofrecido por el servicio compartido,
-	 * irá cambiando dependiendo de la página en la que estemos y añadirá una clase (mirar template) para un comportamiento diferente. 
+	 * irá cambiando dependiendo de la página en la que estemos y añadirá una clase (mirar template) para un comportamiento diferente.
 	 */
 	constructor(private _fileService:FileService, private http: Http){
 		this.pagestate = this._fileService.pageState;

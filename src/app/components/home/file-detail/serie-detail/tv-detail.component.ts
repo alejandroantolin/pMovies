@@ -3,8 +3,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {BrowserXhr} from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
-import { FileService } from '../../services/file.service';
-import { FileDetail, Genres, Person, Company } from '../../models/file';
+import { FileService } from '@services/file.service';
+import { FileDetail, Person, Company } from '@models/file';
 
 
 @Component({
@@ -67,7 +67,7 @@ import { FileDetail, Genres, Person, Company } from '../../models/file';
       ]),
       transition(':leave',animate('450ms ease-out')),
     ]),
-  
+
     trigger('routeAnimation', [
       state('*', style({opacity: 1})),
       transition(':enter', [
@@ -82,7 +82,7 @@ import { FileDetail, Genres, Person, Company } from '../../models/file';
 })
 
 
-export class TvDetailComponent implements OnInit{ 
+export class TvDetailComponent implements OnInit{
 	file: FileDetail;
 	crew: Person[];
 	companies: Company[] = [];

@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 
-import {File, FileDetail, Person, Company} from "../models/file";
+import {File, FileDetail, Person, Company} from '@models/file';
 
 
 
@@ -30,7 +30,7 @@ export class FileService{
 	setFilesData(files:File[]){
 		this._files = files;
 	}
-	
+
 	getFiles(): Observable<File[]>{
 		return this._http.get(`${this.apiUrl}/files`)
 			.map(res =>  res.json().items);
@@ -52,5 +52,5 @@ export class FileService{
 		return this._http.get(`${this.apiUrl}/company/${id}`).map(res => res.json());
 	}
 
- 
+
 }

@@ -11,13 +11,13 @@ import {
 
 import { MaterialModule } from './material.module';
 
-import { AppComponent }  from './app.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { FileListComponent }  from './components/file/file-list.component';
-import { MovieDetailComponent }    from './components/file/movie-detail.component';
-import { TvDetailComponent } from './components/file/tv-detail.component';
+import { AppComponent }  from '@app/app.component';
+import { ToolbarComponent } from '@components/home/toolbar/toolbar.component';
+import { FileListComponent }  from '@components/home/file-list/file-list.component';
+import { MovieDetailComponent }    from '@components/home/file-detail/movie-detail/movie-detail.component';
+import { TvDetailComponent } from '@components/home/file-detail/serie-detail/tv-detail.component';
 
-import { FileService } from './services/file.service';
+import { FileService } from '@services/file.service';
 
 @NgModule({
   imports: [

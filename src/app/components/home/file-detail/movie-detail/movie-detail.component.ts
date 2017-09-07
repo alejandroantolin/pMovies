@@ -3,9 +3,11 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {BrowserXhr} from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
-import { FileService } from '../../services/file.service';
-import { FileDetail, Genres, Person, Company } from '../../models/file';
-import * as Webtorrent from 'webtorrent'; //Importacion del modulo webtorrent, a través de los @type
+import { FileService } from '@services/file.service';
+import { FileDetail, Genres, Person, Company } from '@models/file';
+
+//Importacion del modulo webtorrent, a través de los @type
+import * as Webtorrent from 'webtorrent';
 
 @Component({
   templateUrl: 'movie-detail.component.html',
@@ -67,7 +69,7 @@ import * as Webtorrent from 'webtorrent'; //Importacion del modulo webtorrent, a
       ]),
       transition(':leave',animate('450ms ease-out')),
     ]),
-  
+
     trigger('routeAnimation', [
       state('*', style({opacity: 1})),
       transition(':enter', [
@@ -82,25 +84,25 @@ import * as Webtorrent from 'webtorrent'; //Importacion del modulo webtorrent, a
 })
 
 
-export class MovieDetailComponent implements OnInit{ 
+export class MovieDetailComponent implements OnInit{
 	private sub: Subscription;
 	file: FileDetail;
 	crew: Person[];
 	companies: Company[] = [];
 	errorMessage: string;
   state:string;
-  options:Object = {          
-    maxWebConns: 100,      
+  options:Object = {
+    maxWebConns: 100,
   };
 
   private client:any;
   torrentId:string = 'magnet:?xt=urn:btih:6a9759bffd5c0af65319979fb7832189f4f3c35d&dn=sintel.mp4&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com&ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2Fsintel-1024-surround.mp4';
-  
+
 	constructor(private route: ActivatedRoute,private router: Router,private _fileService: FileService) {}
 
 	ngOnInit(){
     this.client = new Webtorrent();
-  
+
 
     this.state = 'active';
     this._fileService.pageState.page = 'detail';
@@ -133,7 +135,7 @@ export class MovieDetailComponent implements OnInit{
   /**
    * Pruebas con el webtorrent
    */
-  viewMovie(){  
+  viewMovie(){
     this._fileService.pageState.player = true;
 
     this.client.add(this.torrentId, this.options,  (torrent) => {

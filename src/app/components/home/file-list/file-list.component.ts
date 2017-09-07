@@ -1,9 +1,9 @@
 import {Component, Output, OnInit, ViewEncapsulation, trigger, state, style, animate, transition} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 
-import {File} from '../../models/file';
-import {FileService} from '../../services/file.service';
- 
+import {File} from '@models/file';
+import {FileService} from '@services/file.service';
+
 // Decorador component, indicamos en que etiqueta se va a cargar la plantilla
 @Component({
 	templateUrl: 'file-list.component.html',
@@ -68,7 +68,7 @@ export class FileListComponent implements OnInit{
 				if(this.search) this.filterFiles();
 		   		this.loading = false;
 		   	},
-            error =>  this.errorMessage = <any>error) 
+            error =>  this.errorMessage = <any>error)
 	}
 
 	onSelect(file: File) {
@@ -87,7 +87,7 @@ export class FileListComponent implements OnInit{
 			}else if(element.media_type==='tv'){
 				return (element.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1 || element.original_name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1);
 			}
-			
+
 		});
 	}
 
